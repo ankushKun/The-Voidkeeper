@@ -378,6 +378,14 @@ requests-toolbelt = ">=0.7.1"
 
 [[package]]
 category = "main"
+description = "Strict separation of settings from code."
+name = "python-decouple"
+optional = false
+python-versions = "*"
+version = "3.3"
+
+[[package]]
+category = "main"
 description = "Module for generating and verifying JSON Web Tokens"
 name = "python-jwt"
 optional = false
@@ -473,7 +481,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "f65de9e610407f489b81b08074a9b7dd4c76aaaa990ce31e975e90c3c8e0238b"
+content-hash = "3e1f67dd5e901c3929933d8caa751394d3d9acde6b9564fc640e9ddaa48eef63"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -762,6 +770,9 @@ pycryptodome = [
 pyrebase4 = [
     {file = "Pyrebase4-4.4.1-py3-none-any.whl", hash = "sha256:f44fd1f4049676d08a5eca70d1a7f326a21a7f7e451257d99dd29ddd50bee5ca"},
     {file = "Pyrebase4-4.4.1.tar.gz", hash = "sha256:cf7eb349405a03afab777cacc6b249e857d90c4cbd3e08eda2b8f7d94c60a8a6"},
+]
+python-decouple = [
+    {file = "python-decouple-3.3.tar.gz", hash = "sha256:55c546b85b0c47a15a47a4312d451a437f7344a9be3e001660bccd93b637de95"},
 ]
 python-jwt = [
     {file = "python_jwt-2.0.1-py2.py3-none-any.whl", hash = "sha256:6b2d334cfa8af8423d96bff45a00a7bc811d87f460d1e7f4732b3ae90220f02c"},

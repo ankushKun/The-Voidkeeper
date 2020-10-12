@@ -6,18 +6,10 @@ from collections import Counter
 from disputils import BotEmbedPaginator,BotConfirmation
 import pyrebase
 import collections
+from decouple import config
 
-firebaseConfig = {
-    "apiKey": "AIzaSyCQoKH06AcuYrzccnqkSDIqncSA0hMcQek",
-    "authDomain": "void-events-db.firebaseapp.com",
-    "databaseURL": "https://void-events-db.firebaseio.com",
-    "projectId": "void-events-db",
-    "storageBucket": "void-events-db.appspot.com",
-    "messagingSenderId": "810205287616",
-    "appId": "1:810205287616:web:4e46db381b5a7104214925"
-  }
 
-firebase = pyrebase.initialize_app(firebaseConfig)
+firebase = pyrebase.initialize_app(json.loads(config("FIREBASE")))
 db=firebase.database()
 
 def get_class(points):

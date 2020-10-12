@@ -4,6 +4,7 @@ import os
 from asyncio import sleep
 from discord.ext.tasks import loop
 import keep_alive
+from decouple import config
 
 print("---> BOT is waking up\n")
 
@@ -25,4 +26,4 @@ async def on_ready():
     print('\n---> BOT is awake\n')
 
 keep_alive.keep_alive()
-bot.run("NzU5Mjg5NDc2MDMxMTg0OTc3.X27Vbg.L8j9BVxYi2Q0IAGFPR6ETNJa1vs")
+bot.run(config("BOT_TOKEN"))

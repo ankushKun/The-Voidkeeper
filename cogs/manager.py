@@ -148,10 +148,14 @@ class Manager(commands.Cog):
       c = collections.OrderedDict(reversed(list(c.items())))
       c = list(c.items())
     en = db.child("EVENT").child("NAME").get().val()
+    ex = db.child("EVENT").child("MULTIPLIER").get().val()
     lb=""
     for i in range(len(c)):
       if i<10:
-        lb+=f"**Rank {i+1} | <@{c[i][0]}> | {c[i][1]} points**\n"
+        if ex>1:
+          lb+=f"**Rank {i+1} | <@{c[i][0]}> | {c[i][1]} x {ex} = {int(c[i][1]*ex)} points**\n"
+        else:
+          lb+=f"**Rank {i+1} | <@{c[i][0]}> | {c[i][1]} points**\n"
       else:
         break
     emb = discord.Embed(title=en,description=lb,color=0x00FFFF)

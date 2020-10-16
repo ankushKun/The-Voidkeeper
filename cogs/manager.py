@@ -12,6 +12,15 @@ from decouple import config
 firebase = pyrebase.initialize_app(json.loads(config("FIREBASE")))
 db=firebase.database()
 
+theme = {
+  'S':"Zodiac",
+  'A':"Triple Star Hunter",
+  'B':"Double Star Hunter",
+  'C':"Pro Hunter",
+  'D':"Hunter Exam Candidate",
+  'E':"Wannabe Hunter"
+}
+
 def get_class(points):
   if points>=80:
     return "S"
@@ -64,7 +73,7 @@ class Manager(commands.Cog):
     user_id=str(u.id)
     tp = db.child("TOTAL-POINTS").get().val()
     if user_id in tp:
-      e=discord.Embed(title="",description=f"{u.mention} | {tp[user_id]} points | {get_class(tp[user_id])} Class",color=0x00FFFF)
+      e=discord.Embed(title="",description=f"{u.mention} | {tp[user_id]} points | {theme[get_class(tp[user_id])]} Class",color=0x00FFFF)
     else:
       e=discord.Embed(title="",description=f"{u.mention} | 0 Points | No Class",color=0x00FFFF)
     await ctx.send(embed=e)
@@ -82,7 +91,7 @@ class Manager(commands.Cog):
         dsc=""
         while j<i+20:
           try:
-            dsc+=f"**Rank {j+1} | <@{c[j][0]}> | {c[j][1]} points | {get_class(c[j][1])} Class**\n"
+            dsc+=f"**Rank {j+1} | <@{c[j][0]}> | {c[j][1]} points | {theme[get_class(c[j][1])]} Class**\n"
             #print(dsc)
           except Exception as e:
             break
@@ -102,7 +111,7 @@ class Manager(commands.Cog):
     lb=""
     for i in range(len(c)):
       if i<10:
-        lb+=f"**Rank {i+1} | <@{c[i][0]}> | {c[i][1]} points | {get_class(c[i][1])} Class**\n"
+        lb+=f"**Rank {i+1} | <@{c[i][0]}> | {c[i][1]} points | {theme[get_class(c[i][1])]} Class**\n"
       else:
         break
     emb = discord.Embed(title=f"Top 10 Players",description=lb,color=0x00FFFF)
@@ -151,7 +160,8 @@ class Manager(commands.Cog):
     ex = db.child("EVENT").child("MULTIPLIER").get().val()
     lb=""
     for i in range(len(c)):
-      if i<10:
+      #if i<10:
+      if True:
         if ex>1:
           lb+=f"**Rank {i+1} | <@{c[i][0]}> | {c[i][1]} x {ex} = {int(c[i][1]*ex)} points**\n"
         else:
@@ -221,7 +231,7 @@ class Manager(commands.Cog):
           pd="promoted"
         if old_class[id]=="S" and new_class[id]!="S":
           pd="demoted"
-        class_chng+=f"**<@{id}> {pd} to {new_class[id]} Class**\n"
+        class_chng+=f"**<@{id}> {pd} to {theme[new_class[id]]} Class**\n"
     en = db.child("EVENT").child("NAME").get().val()
     emb = discord.Embed(title=en,description=f"{class_chng}",color=0x00FFFF)
     await ctx.send(embed=emb)

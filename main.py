@@ -6,9 +6,14 @@ from discord.ext.tasks import loop
 import keep_alive
 from decouple import config
 
+print(discord.__version__)
+
+intents = discord.Intents.default()
+intents.members = True
+
 print("---> BOT is waking up\n")
 
-bot = commands.Bot(command_prefix=[","],case_insensitive=True)
+bot = commands.Bot(command_prefix=[","],case_insensitive=True,intents=intents)
 bot.remove_command('help')
 
 def load_cogs():

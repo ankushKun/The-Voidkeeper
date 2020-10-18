@@ -12,7 +12,7 @@ from decouple import config
 firebase = pyrebase.initialize_app(json.loads(config("FIREBASE")))
 db=firebase.database()
 
-theme = {
+theme = { # CHANGE THESE ACCORDING TO ROLES
   'S':"Zodiac",
   'A':"Triple Star Hunter",
   'B':"Double Star Hunter",

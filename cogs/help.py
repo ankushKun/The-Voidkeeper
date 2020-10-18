@@ -21,6 +21,11 @@ help_desc="""
 `deletelogs` [dl] deletes the rank logs
 `delete <mention>` deletes a players data from the database
 
+**__Moderation__**
+`purge <amount>` deletes messages from the chat
+`announce <announcement>` sends a DM to all members of the server
+`dm <mention user> <message>` sends a DM to the mentioned user
+
 developed by `weeblet~kun#1193`**
 """
 

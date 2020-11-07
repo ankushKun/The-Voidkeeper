@@ -13,12 +13,12 @@ firebase = pyrebase.initialize_app(json.loads(config("FIREBASE")))
 db=firebase.database()
 
 theme = { # CHANGE THESE ACCORDING TO ROLES
-  'S':"Zodiac",
-  'A':"Triple Star Hunter",
-  'B':"Double Star Hunter",
-  'C':"Pro Hunter",
-  'D':"Hunter Exam Candidate",
-  'E':"Wannabe Hunter"
+  'S':"S",
+  'A':"A",
+  'B':"B",
+  'C':"C",
+  'D':"D",
+  'E':"E"
 }
 
 def get_class(points):

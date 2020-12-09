@@ -7,6 +7,8 @@ from disputils import BotEmbedPaginator,BotConfirmation
 import pyrebase
 import collections
 from decouple import config
+import asyncio
+import time
 
 
 firebase = pyrebase.initialize_app(json.loads(config("FIREBASE")))
@@ -42,6 +44,19 @@ GODS = [272285219942301696,728044189417209856,666578281142812673]
 class Manager(commands.Cog):
   def __init__(self,bot):
     self.bot=bot
+
+  @commands.command(aliases=["t"])
+  async def timer(self,ctx,t:int):
+    await ctx.message.delete()
+    msg = await ctx.send(f"Timer set for **{t} seconds**")
+    half=int(t/2)
+    while t>=0:
+      time.sleep(1)
+      if t==half:
+        h=await ctx.send(f"**Half Time**")
+      await msg.edit(content=f"Time left : **{t} seconds**")
+      t-=1
+    await ctx.send(f"**Time Up!**")
 
   @commands.command(aliases=["gp"])
   async def givepoint(self,ctx,u:discord.User=None,points=0):
